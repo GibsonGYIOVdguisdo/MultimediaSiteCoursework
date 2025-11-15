@@ -1,0 +1,26 @@
+:root {
+  --primary-bg-color: #fadede;
+  --primary-text-color: #992222;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 70px;
+}
+
+.header__item {
+  text-decoration: none;
+  color: var(--primary-text-color);
+}
+
+.content {
+  text-align: center;
+}
