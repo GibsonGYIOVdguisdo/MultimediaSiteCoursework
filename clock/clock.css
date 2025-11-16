@@ -36,19 +36,22 @@
 }
 
 #time-input,
-#set-time {
+#set-time-button,
+#reset-time-button {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
   border: solid 1px;
   height: 20px;
 }
 
-#set-time:hover {
+#set-time-button:hover,
+#reset-time-button:hover {
   opacity: 0.8;
   transition: opacity 0.05s;
 }
 
-#set-time:active {
+#set-time-button:active,
+#reset-time-button:hover {
   opacity: 0.5;
   transition: opacity 0.05s;
 }

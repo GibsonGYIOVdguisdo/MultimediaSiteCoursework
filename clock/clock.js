@@ -1,5 +1,6 @@
 const timeInput = document.getElementById("time-input");
-const timeButton = document.getElementById("set-time");
+const setTimeButton = document.getElementById("set-time-button");
+const resetTimeButton = document.getElementById("reset-time-button");
 
 const secondHand = document.getElementById("second-hand");
 const minuteHand = document.getElementById("minute-hand");
@@ -12,7 +13,7 @@ const storedModificationTime = parseInt(
 let startingTime = storedTime || new Date().getTime();
 let whenWasTimeModified = storedModificationTime || new Date().getTime();
 
-timeButton.addEventListener("click", () => {
+setTimeButton.addEventListener("click", () => {
   const splitValue = timeInput.value.split(":");
   const hours = parseInt(splitValue[0]) || 0;
   const minutes = parseInt(splitValue[1]) || 0;
@@ -23,10 +24,21 @@ timeButton.addEventListener("click", () => {
   newTime.setSeconds(seconds);
   startingTime = newTime.getTime();
   whenWasTimeModified = new Date().getTime();
-  localStorage.setItem("startingTime", startingTime);
-  localStorage.setItem("whenWasTimeModified", whenWasTimeModified);
+  saveCurrentTime();
   updateClock();
 });
+
+resetTimeButton.addEventListener("click", () => {
+  startingTime = new Date().getTime();
+  whenWasTimeModified = new Date().getTime();
+  saveCurrentTime();
+  updateClock();
+});
+
+function saveCurrentTime() {
+  localStorage.setItem("startingTime", startingTime);
+  localStorage.setItem("whenWasTimeModified", whenWasTimeModified);
+}
 
 function setClockTime(hours = 0, minutes = 0, seconds = 0) {
   console.log(hours, minutes, seconds);
