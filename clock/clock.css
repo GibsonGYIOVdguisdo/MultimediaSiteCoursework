@@ -1,7 +1,7 @@
 #clock,
-#hour,
-#min,
-#sec {
+#hour-hand,
+#minute-hand,
+#second-hand {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -15,18 +15,18 @@
   background-image: url(clockface.png);
 }
 
-#hour,
-#min,
-#sec {
+#hour-hand,
+#minute-hand,
+#second-hand {
   position: absolute;
 }
 
-#hour {
+#hour-hand {
   background-image: url(hourhand.png);
 }
-#min {
+#minute-hand {
   background-image: url(minhand.png);
 }
-#sec {
+#second-hand {
   background-image: url(sechand.png);
 }
