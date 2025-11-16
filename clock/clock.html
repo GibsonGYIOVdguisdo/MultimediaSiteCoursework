@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="styles.css" rel="stylesheet" />
+    <link href="../styles.css" rel="stylesheet" />
+    <link href="clock.css" rel="stylesheet" />
     <title>Clock Page</title>
   </head>
   <body>
@@ -12,7 +13,15 @@
       <a class="header__item" href="video.html">Video</a>
       <a class="header__item" href="hobbies.html">Hobbies</a>
       <a class="header__item" href="coursework.html">Coursework</a>
-      <a class="header__item" href="clock.html">Clock</a>
+      <a class="header__item" href="/clock/clock.html">Clock</a>
     </header>
+    <section>
+      <div id="clock">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+      </div>
+    </section>
+    <script src="clock.js"></script>
   </body>
 </html>
