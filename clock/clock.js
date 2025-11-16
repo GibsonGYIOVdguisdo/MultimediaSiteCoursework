@@ -40,21 +40,37 @@ function saveCurrentTime() {
   localStorage.setItem("whenWasTimeModified", whenWasTimeModified);
 }
 
-function setClockTime(hours = 0, minutes = 0, seconds = 0, milliseconds = 0) {
+function getAnimatedHandRotation(currentHandValue, maxHandValue, milliseconds) {
   let tickMilliseconds = 100;
+  let backTickMilliseconds = tickMilliseconds / 2;
 
-  let secondHandRotation = seconds / 60;
+  let tickThreshold = 1000 - tickMilliseconds;
+  let backTickThreshold = 1000 - backTickMilliseconds;
 
-  if (milliseconds > 1000 - tickMilliseconds / 2) {
-    secondHandRotation =
-      secondHandRotation + 1 / 120 + ((1 / 60) * (milliseconds - 900)) / 100;
-  } else if (milliseconds > 1000 - tickMilliseconds) {
-    secondHandRotation =
-      secondHandRotation + ((1 / 60) * (milliseconds - 900)) / 200;
+  let handRotation = currentHandValue / maxHandValue;
+  let spaceBetweenTicks = 1 / maxHandValue;
+  let nextHandRotation = handRotation + spaceBetweenTicks;
+
+  if (milliseconds > backTickThreshold) {
+    return nextHandRotation + spaceBetweenTicks / 2;
   }
+  if (milliseconds > tickThreshold) {
+    return (
+      handRotation +
+      spaceBetweenTicks * ((milliseconds - tickThreshold) / tickMilliseconds)
+    );
+  }
+  return handRotation;
+}
+
+function setClockTime(hours = 0, minutes = 0, seconds = 0, milliseconds = 0) {
+  let secondHandRotation = getAnimatedHandRotation(seconds, 60, milliseconds);
+  let minuteHandRotation = minutes / 60 + secondHandRotation / 60;
+  let hourHandRotation = hours / 12 + minutes / 60 / 12;
+
   secondHand.style.transform = `rotate(${secondHandRotation}turn)`;
-  minuteHand.style.transform = `rotate(${minutes / 60}turn)`;
-  hourHand.style.transform = `rotate(${hours / 12}turn)`;
+  minuteHand.style.transform = `rotate(${minuteHandRotation}turn)`;
+  hourHand.style.transform = `rotate(${hourHandRotation}turn)`;
 }
 
 function updateClock() {
