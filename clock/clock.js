@@ -5,20 +5,26 @@ const secondHand = document.getElementById("second-hand");
 const minuteHand = document.getElementById("minute-hand");
 const hourHand = document.getElementById("hour-hand");
 
-let startingTime = new Date().getTime();
-let whenWasTimeModified = new Date().getTime();
+const storedTime = parseInt(localStorage.getItem("startingTime"));
+const storedModificationTime = parseInt(
+  localStorage.getItem("whenWasTimeModified")
+);
+let startingTime = storedTime || new Date().getTime();
+let whenWasTimeModified = storedModificationTime || new Date().getTime();
 
 timeButton.addEventListener("click", () => {
   const splitValue = timeInput.value.split(":");
-  const hours = parseInt(splitValue[0]);
-  const minutes = parseInt(splitValue[1]);
-  const seconds = parseInt(splitValue[2]);
+  const hours = parseInt(splitValue[0]) || 0;
+  const minutes = parseInt(splitValue[1]) || 0;
+  const seconds = parseInt(splitValue[2]) || 0;
   let newTime = new Date();
   newTime.setMinutes(minutes);
   newTime.setHours(hours);
   newTime.setSeconds(seconds);
   startingTime = newTime.getTime();
   whenWasTimeModified = new Date().getTime();
+  localStorage.setItem("startingTime", startingTime);
+  localStorage.setItem("whenWasTimeModified", whenWasTimeModified);
   updateClock();
 });
 
