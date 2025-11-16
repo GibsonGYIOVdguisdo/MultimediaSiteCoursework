@@ -4,6 +4,18 @@
   --primary-text-color: #992222;
 }
 
+@keyframes becomeVisible {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+}
+section {
+  animation: 0.075s ease-in becomeVisible;
+}
+
 body {
   background-color: var(--primary-bg-color);
   color: var(--primary-text-color);
