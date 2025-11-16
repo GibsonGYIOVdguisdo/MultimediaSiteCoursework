@@ -17,10 +17,9 @@ timeButton.addEventListener("click", () => {
   newTime.setMinutes(minutes);
   newTime.setHours(hours);
   newTime.setSeconds(seconds);
-  console.log(hours);
   startingTime = newTime.getTime();
-
   whenWasTimeModified = new Date().getTime();
+  updateClock();
 });
 
 function setClockTime(hours = 0, minutes = 0, seconds = 0) {

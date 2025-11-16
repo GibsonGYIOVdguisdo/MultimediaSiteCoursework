@@ -1,3 +1,7 @@
+.content {
+  text-align: center;
+}
+
 #clock,
 #hour-hand,
 #minute-hand,
@@ -29,4 +33,22 @@
 }
 #second-hand {
   background-image: url(sechand.png);
+}
+
+#time-input,
+#set-time {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  border: solid 1px;
+  height: 20px;
+}
+
+#set-time:hover {
+  opacity: 0.8;
+  transition: opacity 0.05s;
+}
+
+#set-time:active {
+  opacity: 0.5;
+  transition: opacity 0.05s;
 }
