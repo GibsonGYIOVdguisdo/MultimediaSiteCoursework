@@ -1,0 +1,19 @@
+.card {
+  margin-bottom: 60px;
+}
+
+.card__link {
+  border-width: 1px;
+  border-radius: 10px;
+  color: var(--primary-text);
+}
+
+.card__link:hover {
+  opacity: 0.8;
+  transition: opacity 0.05s;
+}
+
+.card__iframe {
+  width: 500px;
+  height: 500px;
+}
